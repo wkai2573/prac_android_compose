@@ -1,12 +1,15 @@
 package me.wkai.prac_android_compose.ui.screen.eval
 
-import android.widget.TextView
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.text.DecimalFormat
 
@@ -40,16 +43,19 @@ fun EvalScreen() {
 			},
 		)
 
+		val focusManager = LocalFocusManager.current
 		Button(
 			modifier = Modifier.fillMaxWidth(),
 			onClick = {
 				ans = calc(code = code)
+				focusManager.clearFocus()
 			}) {
 			Text(text = "計算", style = MaterialTheme.typography.h5)
 		}
 
+		val scroll = rememberScrollState()
 		Text(
-			modifier = Modifier.weight(1f),
+			modifier = Modifier.weight(1f).verticalScroll(scroll),
 			text = "結果:\n${
 				ans
 					.map { "${it.key} : ${it.value}" }
@@ -85,9 +91,9 @@ private fun calc(
 			runCatching {
 				ExpressionBuilder(formula).build().evaluate()
 			}.onSuccess {
-				ans[valName] = DecimalFormat("0.#").format(it)
+				ans[valName] = DecimalFormat("0.##########").format(it)
 			}.onFailure {
-				ans[valName] = it.message ?: ""
+				ans[valName] = it.message ?: "Unknown error"
 			}
 		}
 	}
