@@ -21,6 +21,8 @@ fun EvalScreen() {
 				val c = b / 5
 				val d = a + b - c
 				val e=a*b+c/d
+				val f= 0/0
+				val g= abcde
 			""".trimIndent()
 		)
 	}
