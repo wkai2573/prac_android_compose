@@ -10,7 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } //js-evaluator-for-android用
+        maven { url 'https://jitpack.io' } //js-evaluator-for-android 需要
     }
 }
 rootProject.name = "prac_androidComposeTools"
