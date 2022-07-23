@@ -23,7 +23,7 @@ data class NumberCard(val id:Int, val number:Int, var isDone:Boolean = false)
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CardMemoryGame() {
+fun CardMemoryGameScreen() {
 	val scope = rememberCoroutineScope()
 
 	//建立數字1~5 2次

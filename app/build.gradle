@@ -114,6 +114,14 @@ dependencies {
     // https://camposha.info/android-examples/android-datetime-libraries/
     //implementation 'com.github.cesarferreira:tempo:0.7.0'
 
-    //exp4j: 字串計算
+    //exp4j: 字串計算, https://www.objecthunter.net/exp4j/apidocs/index.html
     implementation 'net.objecthunter:exp4j:0.4.8'
+
+    //js-evaluator-for-android
+    // https://github.com/evgenyneu/js-evaluator-for-android
+    // https://stackoverflow.com/questions/69163511/build-was-configured-to-prefer-settings-repositories-over-project-repositories-b
+    // https://stackoverflow.com/questions/71044526/your-project-has-set-android-useandroidx-true-but-configuration-debugruntimec
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.github.evgenyneu:js-evaluator-for-android:v5.0.0'
+
 }

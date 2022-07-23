@@ -13,9 +13,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import me.wkai.prac_android_compose.R
 import me.wkai.prac_android_compose.ui.compose.Drawer
-import me.wkai.prac_android_compose.ui.screen.card_memory_game.CardMemoryGame
+import me.wkai.prac_android_compose.ui.screen.card_memory_game.CardMemoryGameScreen
 import me.wkai.prac_android_compose.ui.screen.eval.EvalScreen
-import me.wkai.prac_android_compose.ui.screen.home.Home
+import me.wkai.prac_android_compose.ui.screen.home.HomeScreen
 import me.wkai.prac_android_compose.ui.theme.AppTheme
 
 @AndroidEntryPoint
@@ -55,10 +55,10 @@ private fun MainContent() {
 	) {
 		NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
 			composable(route = Screen.HomeScreen.route) {
-				Home(navController = navController)
+				HomeScreen(navController = navController)
 			}
 			composable(route = Screen.CardMemoryGameScreen.route) {
-				CardMemoryGame()
+				CardMemoryGameScreen()
 			}
 			composable(route = Screen.EvalScreen.route) {
 				EvalScreen()
