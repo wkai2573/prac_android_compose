@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AppBroadcastReceiver : BroadcastReceiver() {
 
+	//當接收廣播
 	override fun onReceive(context:Context, intent:Intent) {
 		StringBuilder().apply {
 			append("Action: ${intent.action}\n")
@@ -27,11 +28,12 @@ class AppBroadcastReceiver : BroadcastReceiver() {
 		}
 	}
 
-	//初始化，在activity onCreate呼叫
 	companion object {
+		//初始化，在activity onCreate呼叫
 		fun init(context: Context) {
 			val br = AppBroadcastReceiver()
 			val filter = IntentFilter().apply {
+				//可接收的廣播
 				addAction(Intent.ACTION_BATTERY_LOW)
 			}
 			context.registerReceiver(br, filter)

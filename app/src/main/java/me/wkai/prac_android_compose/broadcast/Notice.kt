@@ -17,7 +17,7 @@ sealed class Notice(
 
 
 	companion object {
-		//建立通知頻道
+		//建立頻道
 		private fun createNotificationChannel(context:Context, notice:Notice) {
 			val channel = NotificationChannel(
 				notice.name,

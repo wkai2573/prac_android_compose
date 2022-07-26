@@ -1,5 +1,6 @@
 package me.wkai.prac_android_compose.ui.screen.home
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -67,8 +68,18 @@ private fun Buttons() {
 					""".trimIndent()
 				)
 			},
-			content = { Text(text = "點擊通知") }
+			content = { Text(text = "通知") }
 		)
+
+		Button(onClick = {
+			Intent().also { intent ->
+				intent.action = "me.wkai.NOTICE_ME_SENPAI"
+				intent.putExtra("data", "Notice me senpai!")
+				context.sendBroadcast(intent)
+			}
+		}) {
+			Text(text = "發送廣播")
+		}
 	}
 }
 
