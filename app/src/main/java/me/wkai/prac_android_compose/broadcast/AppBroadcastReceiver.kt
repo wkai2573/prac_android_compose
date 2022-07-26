@@ -13,19 +13,18 @@ class AppBroadcastReceiver : BroadcastReceiver() {
 
 	//當接收廣播
 	override fun onReceive(context:Context, intent:Intent) {
-		StringBuilder().apply {
-			append("Action: ${intent.action}\n")
-			append("URI: ${intent.toUri(Intent.URI_INTENT_SCHEME)}\n")
-			toString().also { log ->
-				Toast.makeText(context, "低電量吐司_$log", Toast.LENGTH_LONG).show()
-				Notice.notice(
-					context = context,
-					notice = Notice.ClickNotice,
-					title = "低電電",
-					content = "你的電很低，快充電R",
-				)
-			}
-		}
+		val msg = """
+			data:   ${intent.getStringExtra("data")}
+			Action: ${intent.action}
+			URI:    ${intent.toUri(Intent.URI_INTENT_SCHEME)}
+		""".trimIndent()
+		Toast.makeText(context, "低電量吐司\n$msg", Toast.LENGTH_LONG).show()
+		Notice.notice(
+			context = context,
+			notice = Notice.ClickNotice,
+			title = "低電電",
+			content = "你的電很低，快充電R",
+		)
 	}
 
 	companion object {
