@@ -23,7 +23,6 @@
     <activity
       android:name="me.wkai.prac_android_compose.ui.screen.MainActivity"
       android:exported="true"
-      android:label="@string/app_name"
       android:theme="@style/Theme.prac_android_compose">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -31,6 +30,15 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <!-- 廣播 -->
+    <receiver android:name=".broadcast.AppBroadcastReceiver"  android:exported="true">
+      <intent-filter>
+        <!-- 低電量 -->
+        <action android:name="android.intent.action.ACTION_BATTERY_LOW" />
+      </intent-filter>
+    </receiver>
+
   </application>
 
 </manifest>

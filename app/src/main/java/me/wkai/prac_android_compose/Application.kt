@@ -6,7 +6,8 @@ import dagger.hilt.android.HiltAndroidApp
 //啟動區
 @HiltAndroidApp
 class Application : Application() {
-	companion object {
 
+	companion object {
 	}
+
 }

@@ -13,5 +13,5 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' } //js-evaluator-for-android 需要
     }
 }
-rootProject.name = "prac_androidComposeTools"
+rootProject.name = "prac_android_compose"
 include ':app'

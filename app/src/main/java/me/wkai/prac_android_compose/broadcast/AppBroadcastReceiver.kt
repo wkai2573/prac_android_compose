@@ -1,0 +1,40 @@
+package me.wkai.prac_android_compose.broadcast
+
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.widget.Toast
+import dagger.hilt.android.AndroidEntryPoint
+
+//廣播_低電量提示toast & 通知
+@AndroidEntryPoint
+class AppBroadcastReceiver : BroadcastReceiver() {
+
+	override fun onReceive(context:Context, intent:Intent) {
+		StringBuilder().apply {
+			append("Action: ${intent.action}\n")
+			append("URI: ${intent.toUri(Intent.URI_INTENT_SCHEME)}\n")
+			toString().also { log ->
+				Toast.makeText(context, "低電量吐司_$log", Toast.LENGTH_LONG).show()
+				Notice.notice(
+					context = context,
+					notice = Notice.ClickNotice,
+					title = "低電電",
+					content = "你的電很低，快充電R",
+				)
+			}
+		}
+	}
+
+	//初始化，在activity onCreate呼叫
+	companion object {
+		fun init(context: Context) {
+			val br = AppBroadcastReceiver()
+			val filter = IntentFilter().apply {
+				addAction(Intent.ACTION_BATTERY_LOW)
+			}
+			context.registerReceiver(br, filter)
+		}
+	}
+}

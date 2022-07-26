@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
 	fun useAppContext() {
 		// Context of the app under test.
 		val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-		assertEquals("me.wkai.prac_androidcomposetools", appContext.packageName)
+		assertEquals("me.wkai.prac_android_compose", appContext.packageName)
 	}
 }

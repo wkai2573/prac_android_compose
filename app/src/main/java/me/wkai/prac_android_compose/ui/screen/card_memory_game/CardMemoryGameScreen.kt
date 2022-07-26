@@ -1,11 +1,10 @@
 package me.wkai.prac_android_compose.ui.screen.card_memory_game
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +20,6 @@ import kotlinx.coroutines.launch
 //編號, 數字, 已完成
 data class NumberCard(val id:Int, val number:Int, var isDone:Boolean = false)
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CardMemoryGameScreen() {
 	val scope = rememberCoroutineScope()
@@ -39,7 +37,7 @@ fun CardMemoryGameScreen() {
 	//選擇的卡片
 	val selCards = listOf<NumberCard>().toMutableStateList()
 
-	LazyVerticalGrid(cells = GridCells.Fixed(3)) {
+	LazyVerticalGrid(columns = GridCells.Fixed(3)) {
 		items(cards) { card ->
 			var text = ""
 			var bgc = Color(0xFFFFB241)
