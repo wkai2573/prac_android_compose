@@ -1,4 +1,4 @@
-package me.wkai.prac_android_compose.broadcast
+package me.wkai.prac_android_compose.util
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,9 +15,8 @@ sealed class Notice(
 	object ClickNotice : Notice(1, "點擊通知", "點擊時通知")
 	object RegularNotice : Notice(2, "例行通知", "時間到時通知")
 
-
 	companion object {
-		//建立頻道
+		//建立&註冊頻道
 		private fun createNotificationChannel(context:Context, notice:Notice) {
 			val channel = NotificationChannel(
 				notice.name,
@@ -26,7 +25,6 @@ sealed class Notice(
 			).apply {
 				description = notice.description
 			}
-			//註冊頻道
 			val notificationManager:NotificationManager =
 				context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 			notificationManager.createNotificationChannel(channel)

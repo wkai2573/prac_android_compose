@@ -12,12 +12,13 @@ import androidx.navigation.compose.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import me.wkai.prac_android_compose.R
-import me.wkai.prac_android_compose.broadcast.AppBroadcastReceiver
+import me.wkai.prac_android_compose.util.AppBroadcastReceiver
 import me.wkai.prac_android_compose.ui.compose.Drawer
 import me.wkai.prac_android_compose.ui.screen.card_memory_game.CardMemoryGameScreen
 import me.wkai.prac_android_compose.ui.screen.eval.EvalScreen
 import me.wkai.prac_android_compose.ui.screen.home.HomeScreen
 import me.wkai.prac_android_compose.ui.theme.AppTheme
+import me.wkai.prac_android_compose.util.AppService
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -27,6 +28,9 @@ class MainActivity : ComponentActivity() {
 
 		//註冊廣播
 		AppBroadcastReceiver.init(this)
+
+		//啟用服務
+		AppService.init(this)
 
 		setContent {
 			AppTheme {

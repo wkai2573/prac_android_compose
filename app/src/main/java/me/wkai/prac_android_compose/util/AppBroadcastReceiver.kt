@@ -1,4 +1,4 @@
-package me.wkai.prac_android_compose.broadcast
+package me.wkai.prac_android_compose.util
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -29,13 +29,14 @@ class AppBroadcastReceiver : BroadcastReceiver() {
 
 	companion object {
 		//初始化，在activity onCreate呼叫
-		fun init(context: Context) {
+		fun init(context: Context):AppBroadcastReceiver {
 			val br = AppBroadcastReceiver()
 			val filter = IntentFilter().apply {
 				//可接收的廣播
 				addAction(Intent.ACTION_BATTERY_LOW)
 			}
 			context.registerReceiver(br, filter)
+			return br
 		}
 	}
 }

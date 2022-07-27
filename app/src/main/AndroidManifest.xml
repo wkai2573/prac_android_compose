@@ -4,7 +4,7 @@
   package="me.wkai.prac_android_compose">
 
   <!-- 權限:網路 -->
-  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.INTERNET" />
   <!-- 權限:相機 -->
   <uses-permission android:name="android.permission.CAMERA" />
 
@@ -32,13 +32,15 @@
     </activity>
 
     <!-- 廣播 -->
-    <receiver android:name=".broadcast.AppBroadcastReceiver"  android:exported="true">
+    <receiver android:name=".util.AppBroadcastReceiver" android:exported="true">
       <intent-filter>
         <!-- 低電量 -->
         <action android:name="android.intent.action.ACTION_BATTERY_LOW" />
       </intent-filter>
     </receiver>
 
-  </application>
+    <!-- 服務 -->
+    <service android:name=".util.AppService" android:exported="true" />
 
+  </application>
 </manifest>
