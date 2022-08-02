@@ -8,7 +8,6 @@
   <!-- 權限:相機 -->
   <uses-permission android:name="android.permission.CAMERA" />
 
-
   <application
     android:name="me.wkai.prac_android_compose.Application"
     android:allowBackup="true"
