@@ -3,10 +3,13 @@ package me.wkai.prac_android_compose.ui.screen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,16 +65,18 @@ private fun MainContent() {
 			)
 		},
 		drawerContent = { Drawer(scaffoldState.drawerState, navController = navController) },
-	) {
-		NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
-			composable(route = Screen.HomeScreen.route) {
-				HomeScreen(navController = navController)
-			}
-			composable(route = Screen.CardMemoryGameScreen.route) {
-				CardMemoryGameScreen()
-			}
-			composable(route = Screen.EvalScreen.route) {
-				EvalScreen()
+	) { padding ->
+		Column(modifier = Modifier.padding(padding)) {
+			NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
+				composable(route = Screen.HomeScreen.route) {
+					HomeScreen(navController = navController)
+				}
+				composable(route = Screen.CardMemoryGameScreen.route) {
+					CardMemoryGameScreen()
+				}
+				composable(route = Screen.EvalScreen.route) {
+					EvalScreen()
+				}
 			}
 		}
 	}
