@@ -1,6 +1,10 @@
 package me.wkai.prac_android_compose.ui.screen
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -29,10 +33,10 @@ class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState:Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		//註冊廣播
+		// 註冊廣播
 		AppBroadcastReceiver.init(this)
 
-		//啟用服務
+		// 啟用服務
 		AppService.init(this)
 
 		setContent {
@@ -47,8 +51,8 @@ class MainActivity : ComponentActivity() {
 private fun MainContent() {
 
 	val scope = rememberCoroutineScope()
-	val scaffoldState = rememberScaffoldState() //鷹架state
-	val navController = rememberNavController() //導航state
+	val scaffoldState = rememberScaffoldState() // 鷹架state
+	val navController = rememberNavController() // 導航
 
 	Scaffold(
 		scaffoldState = scaffoldState,
@@ -72,7 +76,7 @@ private fun MainContent() {
 			modifier = Modifier.padding(padding),
 		) {
 			composable(route = Screen.HomeScreen.route) {
-				HomeScreen(navController = navController)
+				HomeScreen(scaffoldState = scaffoldState, navController = navController)
 			}
 			composable(route = Screen.CardMemoryGameScreen.route) {
 				CardMemoryGameScreen()
