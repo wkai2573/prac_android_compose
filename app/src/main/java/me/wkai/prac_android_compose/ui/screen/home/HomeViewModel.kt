@@ -2,9 +2,6 @@ package me.wkai.prac_android_compose.ui.screen.home
 
 import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.Network
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -52,24 +49,6 @@ class HomeViewModel @Inject constructor(
 			intent.putExtra("data", "Notice me senpai!")
 			context.sendBroadcast(intent)
 		}
-	}
-
-	// 註冊偵測網路改變
-	fun initDetectionNetwork(context:Context) {
-		val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-		connectivityManager.registerDefaultNetworkCallback(object : ConnectivityManager.NetworkCallback() {
-			override fun onAvailable(network:Network) {
-				viewModelScope.launch {
-					_eventFlow.emit(HomeViewModel.UiEvent.ShowSnackbar("有網路啦 $network"))
-				}
-			}
-
-			override fun onLost(network:Network) {
-				viewModelScope.launch {
-					_eventFlow.emit(UiEvent.ShowSnackbar("網路斷線啦 $network"))
-				}
-			}
-		})
 	}
 
 	// ==初始化==

@@ -15,14 +15,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.flowlayout.FlowRow
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.wkai.prac_android_compose.ui.screen.home.compose.HashTags
-import me.wkai.prac_android_compose.util.Notice
 
 
 @Composable
@@ -35,7 +33,6 @@ fun HomeScreen(
 	val context = LocalContext.current
 
 	LaunchedEffect(key1 = true) {
-		homeVM.initDetectionNetwork(context)
 		//ui事件處理
 		homeVM.eventFlow.collectLatest { event ->
 			when (event) {
