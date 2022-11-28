@@ -31,9 +31,9 @@ import me.wkai.prac_android_compose.ui.screen.home.HomeScreen
 import me.wkai.prac_android_compose.ui.theme.AppTheme
 import me.wkai.prac_android_compose.util.AppService
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
 	override fun onCreate(savedInstanceState:Bundle?) {
 		super.onCreate(savedInstanceState)
 
@@ -79,6 +79,8 @@ private fun MainContent(
 		},
 		drawerContent = { Drawer(scaffoldState.drawerState, navController = navController) },
 	) { padding ->
+		val context = LocalContext.current
+
 		UpTipLayout(mainVM = mainVM) {
 			NavHost(
 				navController = navController,
